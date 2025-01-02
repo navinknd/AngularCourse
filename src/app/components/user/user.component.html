@@ -1,0 +1,9 @@
+<p>User Component</p>
+<p>Welcome {{ UserName }} Date: {{ currrentDate }}</p>
+
+
+<button (click)="sendDateFromChildToParent()">Send Data</button>
+
+
+<input type="text" class="p-2 m-2" [(ngModel)]="UserName" />
+
