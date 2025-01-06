@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { TUser } from './components/user/user.component';
+import { TemplateRefComponent } from './components/template-ref/template-ref.component';
 
 // type ClassObj = { [key: string]: boolean }
 
@@ -73,6 +74,9 @@ export class AppComponent {
   userList: string[] = [];
   myDate: Date = new Date();
 
+  // @ViewChild("templeteRef") getTempleteRef!: TemplateRefComponent
+  @ViewChild(TemplateRefComponent) getTempleteRef!: TemplateRefComponent
+
   addUser(): void {
     this.userList.push(this.userName);
     this.userName = ""
@@ -85,5 +89,11 @@ export class AppComponent {
     this.userList.push(data.name)
     this.userName = data.name;
     console.log(data, "check here..........", this.userList);
+  }
+
+  ngAfterViewInit(): void {
+
+    console.log(this.getTempleteRef, "*************getTempleteRef*******************");
+
   }
 }
