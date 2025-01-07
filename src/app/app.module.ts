@@ -7,6 +7,9 @@ import { AddUserComponent } from './components/add-user/add-user.component';
 import { TemplateRefComponent } from './components/template-ref/template-ref.component';
 import { TemplateRef2Component } from './components/template-ref2/template-ref2.component';
 import { TemplateRef3Component } from './components/template-ref3/template-ref3.component';
+import { ParentComponent } from './components/parent/parent.component';
+import { ChildComponent } from './components/child/child.component';
+import { CpeComponent } from './components/cpe/cpe.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,7 +17,10 @@ import { TemplateRef3Component } from './components/template-ref3/template-ref3.
     AddUserComponent,
     TemplateRefComponent,
     TemplateRef2Component,
-    TemplateRef3Component
+    TemplateRef3Component,
+    ParentComponent,
+    ChildComponent,
+    CpeComponent
   ],
   imports: [
     BrowserModule,
