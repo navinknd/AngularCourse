@@ -10,6 +10,8 @@ import { TemplateRef3Component } from './components/template-ref3/template-ref3.
 import { ParentComponent } from './components/parent/parent.component';
 import { ChildComponent } from './components/child/child.component';
 import { CpeComponent } from './components/cpe/cpe.component';
+import { ContainerComponent } from './components/container/container.component';
+import { LifecycleComponent } from './components/lifecycle/lifecycle.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +22,9 @@ import { CpeComponent } from './components/cpe/cpe.component';
     TemplateRef3Component,
     ParentComponent,
     ChildComponent,
-    CpeComponent
+    CpeComponent,
+    ContainerComponent,
+    LifecycleComponent
   ],
   imports: [
     BrowserModule,

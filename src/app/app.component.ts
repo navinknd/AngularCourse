@@ -70,30 +70,37 @@ export class AppComponent {
   //   }
   // }
 
-  userName: string = "";
-  userList: string[] = [];
-  myDate: Date = new Date();
+  // userName: string = "";
+  // userList: string[] = [];
+  // myDate: Date = new Date();
 
   // @ViewChild("templeteRef") getTempleteRef!: TemplateRefComponent
-  @ViewChild(TemplateRefComponent) getTempleteRef!: TemplateRefComponent
+  // @ViewChild(TemplateRefComponent) getTempleteRef!: TemplateRefComponent
 
-  addUser(): void {
-    this.userList.push(this.userName);
-    this.userName = ""
+  // addUser(): void {
+  //   this.userList.push(this.userName);
+  //   this.userName = ""
 
-    console.log(this.userList, "here.....");
+  //   console.log(this.userList, "here.....");
 
-  }
+  // }
 
-  getDateFromCHild(data: TUser) {
-    this.userList.push(data.name)
-    this.userName = data.name;
-    console.log(data, "check here..........", this.userList);
-  }
+  // getDateFromCHild(data: TUser) {
+  //   this.userList.push(data.name)
+  //   this.userName = data.name;
+  //   console.log(data, "check here..........", this.userList);
+  // }
 
-  ngAfterViewInit(): void {
+  // ngAfterViewInit(): void {
 
-    console.log(this.getTempleteRef, "*************getTempleteRef*******************");
+  //   console.log(this.getTempleteRef, "*************getTempleteRef*******************");
 
+  // }
+
+  email: string = ""
+
+  getValue(){
+    console.log("getValue called");
+    
   }
 }

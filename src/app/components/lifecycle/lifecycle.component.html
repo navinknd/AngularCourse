@@ -1,0 +1,12 @@
+<p>lifecycle works!</p>
+
+<ng-container *ngIf="products.length > 0">
+  <ng-container *ngFor="let product of products">
+    <ng-container *ngIf="product.id">
+      <p>{{ product.userId }}</p>
+    </ng-container>
+  </ng-container>
+</ng-container>
+
+
+<button (click)="handleClick()">CLick me</button>

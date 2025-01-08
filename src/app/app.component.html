@@ -132,8 +132,6 @@
 </div>
 <p>Im here</p> -->
 
-
-
 <!-- <input type="text" [(ngModel)]="userName" />
 
 <button (click)="addUser()">Add User</button> -->
@@ -147,7 +145,10 @@
 
 <!-- <besant-template-ref #templeteRef></besant-template-ref> -->
 
+<!-- <p>App component</p> -->
 
-<p>App component</p>
+<!-- <besant-parent></besant-parent> -->
 
-<besant-parent></besant-parent>
+<!-- <besant-container></besant-container> -->
+<input type="text" [(ngModel)]="email" (change)="getValue()"/>
+<besant-lifecycle [emailId]="email"></besant-lifecycle>
