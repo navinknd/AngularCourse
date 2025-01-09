@@ -97,10 +97,11 @@ export class AppComponent {
 
   // }
 
-  email: string = ""
+  email: string = "navin@gmail.com"
+  show: boolean = true
 
-  getValue(){
+  getValue() {
     console.log("getValue called");
-    
+
   }
 }

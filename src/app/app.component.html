@@ -150,5 +150,10 @@
 <!-- <besant-parent></besant-parent> -->
 
 <!-- <besant-container></besant-container> -->
-<input type="text" [(ngModel)]="email" (change)="getValue()"/>
-<besant-lifecycle [emailId]="email"></besant-lifecycle>
+<input type="text" [(ngModel)]="email" (change)="getValue()" />
+
+<besant-lifecycle *ngIf="show">
+  <p #emailID>My Email ID: {{ email }}</p>
+</besant-lifecycle>
+
+<button class="btn btn-primary" (click)="show = !show">show/hide</button>

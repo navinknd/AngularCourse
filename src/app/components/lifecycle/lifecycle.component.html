@@ -1,12 +1,19 @@
-<p>lifecycle works!</p>
+<p #title>lifecycle works!</p>
+<!-- <p #title>lifecycle works!</p>
+<p #title>lifecycle works!</p>
+<p #title>lifecycle works!</p>
+<p #title>lifecycle works!</p> -->
 
-<ng-container *ngIf="products.length > 0">
-  <ng-container *ngFor="let product of products">
-    <ng-container *ngIf="product.id">
-      <p>{{ product.userId }}</p>
-    </ng-container>
-  </ng-container>
-</ng-container>
+<div *ngIf="isAdmin">
+  <p #role>Welcome Admin</p>
+</div>
 
+<div *ngIf="!isAdmin">
+  <p #role>Welcome User</p>
+</div>
 
-<button (click)="handleClick()">CLick me</button>
+<ng-content></ng-content>
+
+<button (click)="handleClick()">Toggle Role</button>
+
+<besant-child #childComponent></besant-child>

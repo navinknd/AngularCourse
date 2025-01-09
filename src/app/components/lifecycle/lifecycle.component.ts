@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { Component, ContentChild, Input, OnInit, SimpleChanges, ViewChild, ViewChildren } from '@angular/core';
 
 @Component({
   selector: 'besant-lifecycle',
@@ -7,63 +7,80 @@ import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 })
 export class LifecycleComponent implements OnInit {
 
-  @Input() emailId!: string;
+  // @Input() emailId!: string;
+  @ContentChild("emailID") emailId!: string;
+  // @ViewChild("title") title!: string;
+  @ViewChild("title") title!: string;
+  @ViewChild("role") role!: string;
+
+  isAdmin: boolean = true
 
   course: string = "Angular";
   skill: string[] = ["Typescript", "Scss", "Rxjs", "Git"]
   products: any[] = []
   constructor() {
     console.log("LifecycleComponent constructor called");
-    // console.log(this.emailId, "emailID");
-    // console.log(this.course, "course");
-    // console.log(this.skill, "skill");
+    // console.log(this.emailId, "PRojected Content");
+    // console.log(this.title, "check the view child value");
+
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
-    //Add '${implements OnChanges}' to the class.
-    console.log(changes, "ngOnChanges");
+    console.log("LifecycleComponent ngOnChanges called");
+    // console.log(this.emailId, "PRojected Content");
+    // console.log(this.title, "check the view child value");
+
   }
 
   ngOnInit(): void {
     console.log("LifecycleComponent ngOnInit called");
-    // console.log(this.emailId, "emailID");
-    // console.log(this.course, "course");
-    // console.log(this.skill, "skill");
+    // console.log(this.emailId, "PRojected Content");
+    // console.log(this.title, "check the view child value");
 
-    // fetch the products bind in the products variable
-    this.products = [{
-      "userId": 1,
-      "id": 10,
-      "title": "optio molestias id quia eum",
-      "body": "quo et expedita modi cum officia vel magni\ndoloribus qui repudiandae\nvero nisi sit\nquos veniam quod sed accusamus veritatis error"
-    }, {
-      "userId": 2,
-      "id": 10,
-      "title": "optio molestias id quia eum",
-      "body": "quo et expedita modi cum officia vel magni\ndoloribus qui repudiandae\nvero nisi sit\nquos veniam quod sed accusamus veritatis error"
-    }, {
-      "userId": 3,
-      "id": 10,
-      "title": "optio molestias id quia eum",
-      "body": "quo et expedita modi cum officia vel magni\ndoloribus qui repudiandae\nvero nisi sit\nquos veniam quod sed accusamus veritatis error"
-    }, {
-      "userId": 4,
-      "id": 10,
-      "title": "optio molestias id quia eum",
-      "body": "quo et expedita modi cum officia vel magni\ndoloribus qui repudiandae\nvero nisi sit\nquos veniam quod sed accusamus veritatis error"
-    }]
   }
 
   ngDoCheck(): void {
-    //Called every time that the input properties of a component or a directive are checked. Use it to extend change detection by performing a custom check.
-    //Add 'implements DoCheck' to the class.
-    console.log("ngDoCheck called");
+    console.log("LifecycleComponent ngDoCheck called");
+    // console.log(this.title, "check the view child value");
+
+  }
+
+  ngAfterContentInit(): void {
+    console.log("LifecycleComponent ngAfterContentInit called");
+    // console.log(this.emailId, "PRojected Content");
+    // console.log(this.title, "check the view child value");
+
+  }
+
+  ngAfterContentChecked(): void {
+    console.log("LifecycleComponent ngAfterContentChecked called");
+    // console.log(this.emailId, "PRojected Content");
+    // console.log(this.title, "check the view child value");
+
+  }
+
+  ngAfterViewInit(): void {
+    console.log("LifecycleComponent ngAfterViewInit called");
+    // console.log(this.title, "check the view child value title");
+    // console.log(this.role, "check the view child value role");
+  }
+
+  ngAfterViewChecked(): void {
+    console.log("LifecycleComponent ngAfterViewChecked called");
+    // console.log(this.emailId, "PRojected Content");
+    // console.log(this.title, "check the view child value title");
+    // console.log(this.role, "check the view child value role");
   }
 
   handleClick() {
     console.log("handleClick called");
-
+    this.isAdmin = !this.isAdmin
   }
 
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    console.log("LifecycleComponent ngOnDestroy called");
+  }
 }
