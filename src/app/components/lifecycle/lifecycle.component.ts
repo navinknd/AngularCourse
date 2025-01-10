@@ -7,7 +7,7 @@ import { Component, ContentChild, Input, OnInit, SimpleChanges, ViewChild, ViewC
 })
 export class LifecycleComponent implements OnInit {
 
-  // @Input() emailId!: string;
+  @Input() email!: string;
   @ContentChild("emailID") emailId!: string;
   // @ViewChild("title") title!: string;
   @ViewChild("title") title!: string;
@@ -25,7 +25,7 @@ export class LifecycleComponent implements OnInit {
 
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(): void {
     console.log("LifecycleComponent ngOnChanges called");
     // console.log(this.emailId, "PRojected Content");
     // console.log(this.title, "check the view child value");

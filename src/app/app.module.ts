@@ -12,6 +12,10 @@ import { ChildComponent } from './components/child/child.component';
 import { CpeComponent } from './components/cpe/cpe.component';
 import { ContainerComponent } from './components/container/container.component';
 import { LifecycleComponent } from './components/lifecycle/lifecycle.component';
+import { PipesComponent } from './components/pipes/pipes.component';
+import { CapPipe } from './components/cap.pipe';
+import { AnsPipe } from './components/ans.pipe';
+import { PiceCalPipe } from './components/pice-cal.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +28,11 @@ import { LifecycleComponent } from './components/lifecycle/lifecycle.component';
     ChildComponent,
     CpeComponent,
     ContainerComponent,
-    LifecycleComponent
+    LifecycleComponent,
+    PipesComponent,
+    CapPipe,
+    AnsPipe,
+    PiceCalPipe
   ],
   imports: [
     BrowserModule,

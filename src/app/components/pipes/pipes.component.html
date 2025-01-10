@@ -1,0 +1,44 @@
+<ng-container *ngIf="list.length > 0; else noList">
+  <table class="table table-striped container mt-5">
+    <thead>
+      <tr>
+        <th scope="col">S.No</th>
+        <th scope="col">User ID</th>
+        <th scope="col">Role</th>
+        <th scope="col">Title</th>
+        <th scope="col">Price</th>
+        <th scope="col">Completed</th>
+        <th scope="col">Date</th>
+        <!-- <th scope="col">Json</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let obj of list">
+        <tr>
+          <th scope="row">{{ obj.id }}</th>
+          <th>{{ obj.userId }}</th>
+          <!-- <th>{{ obj.role | lowercase }}</th> -->
+          <th>{{ obj.role | cap }}</th>
+          <td>{{ obj.title }}</td>
+          <!-- <td>
+            {{ obj.price | percent:'4.2'
+            }}
+          </td> -->
+          <!-- <td>{{ obj.price | currency : "INR" }}</td> -->
+          <td>
+            {{ obj.price | piceCal }}
+            <!-- {{ obj.price | number : "4.1-5" }} -->
+          </td>
+
+          <td>{{ obj.completed | ans }}</td>
+          <td>{{ obj.date | date : "medium" }}</td>
+          <!-- <td>{{ obj | json}}</td> -->
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</ng-container>
+
+<ng-template #noList>
+  <p>No List Available...</p>
+</ng-template>
