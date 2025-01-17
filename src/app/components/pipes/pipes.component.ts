@@ -41,7 +41,7 @@ export class PipesComponent implements OnInit {
       "title": "fugiat veniam minus",
       "completed": false,
       "date": new Date(),
-      "role":  "admin",
+      "role": "admin",
       "price": 500
     },
     {
@@ -77,13 +77,16 @@ export class PipesComponent implements OnInit {
       "title": "et porro tempora",
       "completed": true,
       "date": new Date(),
-      "role":  "admin",
+      "role": "admin",
       "price": 3600
     }
   ]
   constructor() { }
 
   ngOnInit(): void {
+    // setInterval(() => {
+    //   console.log("change detected...");
+    // }, 1000);
   }
 
 }
