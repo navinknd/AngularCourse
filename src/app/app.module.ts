@@ -22,6 +22,9 @@ import { PiceCalPipe } from './pipes/pice-cal.pipe';
 import { DiscountPipe } from './pipes/discount.pipe';
 // directives
 import { HighlightDirective } from './directives/highlight.directive';
+import { ServicesComponent } from './components/services/services.component';
+import { Services1Component } from './components/services1/services1.component';
+import { Services2Component } from './components/services2/services2.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +43,10 @@ import { HighlightDirective } from './directives/highlight.directive';
     AnsPipe,
     PiceCalPipe,
     DiscountPipe,
-    HighlightDirective // import here components/directives/pipes
+    HighlightDirective,
+    ServicesComponent,
+    Services1Component,
+    Services2Component // import here components/directives/pipes
   ],
   imports: [
     BrowserModule, // importing other or required modules
