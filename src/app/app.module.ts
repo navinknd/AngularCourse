@@ -26,6 +26,22 @@ import { Services2Component } from './components/services2/services2.component';
 import { UserComponent } from './DI/user/user.component';
 import { AddUserComponent } from './DI/add-user/add-user.component';
 import { DiUserService } from './DI/di-user.service';
+import { RouterModule, Routes } from '@angular/router';
+
+const route: Routes = [
+  {
+    path: "",
+    component: TemplateRefComponent
+  },
+  {
+    path: "add-user",
+    component: AddUserComponent
+  },
+  {
+    path: "pipe",
+    component: PipesComponent
+  }
+]
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,12 +67,13 @@ import { DiUserService } from './DI/di-user.service';
   ],
   imports: [
     BrowserModule, // importing other or required modules
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(route)
   ],
   // providers: [DiUserService], // injecting the services
 
   exports: [],// where you are going to share component/pipe/directives to other module
-  
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
