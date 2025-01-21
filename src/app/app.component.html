@@ -1,167 +1,19 @@
-<!-- <h2>Directives</h2>
-<ul>
-  <li>Component Directive</li>
-  <li>Structural Directive</li>
-  <li>Attribute Directive</li>
-</ul> -->
-
-<!-- <h3 *ngIf="!isStructuralDirective">Attribute Directive</h3> -->
-
-<!-- <div class="div_element example">Normal</div> -->
-
-<!-- <div [ngClass]="['div_element','example']">Multiple Ngclass</div> -->
-
-<!-- <div [ngClass]="{ active: true, highlight: false }">Dynamic Ngclass</div> -->
-
-<!-- <div [ngClass]="{ 'active': isActive, 'highlight': isHightlight }">Dynamic Ngclass</div> -->
-
-<!-- <div [ngClass]="[isActive ? 'active' : 'InActive']">Ternary Ngclass</div>  -->
-
-<!-- <div [ngClass]="getClassNames()">function Ngclass</div>  -->
-
-<!-- <div style="border: 1px solid lightblue;background-color: blueviolet;">normal style</div> -->
-
-<!-- <div
-  [ngStyle]="{
-    color: colorValue,
-    'background-color': bgColor,
-    display: display,
-    border: this.display !== 'none' ? '1px solid green' : 'none'
-  }"
->
-  Dynamic NgStyle
-</div>
-<div [ngStyle]="getStyles()">Dynamic NgStyle</div> -->
-
-<!-- if(!isStructuralDirective){
-
-<h3>Attribute Directive</h3>
-}else{
-
-<h2>Structural Directive</h2>
-} -->
-
-<!-- <h2 *ngIf="isStructuralDirective">Structural Directive</h2> -->
-
-<!-- <div *ngIf="isStructuralDirective; else elseBlock">
-  <h3>Structural Directive</h3>
-</div>
-
-<ng-template #elseBlock>Attribute Directive.</ng-template> -->
-
-<!-- <div *ngIf="isStructuralDirective; then thenBlock; else elseBlock"></div>
-
-<ng-template #elseBlock>Attribute Directive.</ng-template>
-
-<ng-template #thenBlock>
-  <h3>Structural Directive</h3>
-</ng-template> -->
-
-<!-- <ng-template>
-  <h3>Hi</h3>
-</ng-template> -->
-
-<!-- <div
-  *ngFor="
-    let item of items;
-    let i = index;
-    let isFirst = first;
-    let isLast = last;
-    let isEven = even;
-    let isOdd = odd
-  "
-  class="container"
->
-  <p [ngClass]="[isEven ? 'active' : 'InActive']">{{ item }}</p>
-  <span>{{ i }}</span>
-  <span>{{ isFirst ? "first element" : "" }}</span>
-  <span>{{ isLast ? "last element" : "" }}</span>
-</div> -->
-
-<!-- <div *ngIf="userRole === 'Admin'">
-  <h2>Welcome Admin</h2>
-  <p>You have full access to manage the system.</p>
-</div>
-
-<div *ngIf="userRole === 'Editor'">
-  <h2>Welcome Editor</h2>
-  <p>You can edit the content but can't manage the system</p>
-</div>
-
-<div *ngIf="userRole === 'Viewer'">
-  <h2>Welcome Viewer</h2>
-  <p>You can only view the content and you have no editing permissions</p>
-</div>
-<div
-  *ngIf="userRole !== 'Viewer' && userRole !== 'Editor' && userRole !== 'Admin'"
->
-  <h2>Welcome Guest</h2>
-  <p>You are not logged in user</p>
-</div> -->
-
-<!-- <div [ngSwitch]="userRole">
-  <div *ngSwitchCase="'Admin'">
-    <h2>Welcome Admin</h2>
-    <p>You have full access to manage the system.</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 my-2">
+      <besant-add-user></besant-add-user>
+    </div>
   </div>
-
-  <div *ngSwitchCase="'Editor'">
-    <h2>Welcome Editor</h2>
-    <p>You can edit the content but can't manage the system</p>
+  <div class="row">
+    <div class="col-md-12 my-2">
+      <besant-user
+        *ngFor="let user of users; let i = index"
+        [user]="user"
+        [index]="i"
+      ></besant-user>
+    </div>
   </div>
-
-  <div *ngSwitchCase="'Viewer'">
-    <h2>Welcome Viewer</h2>
-    <p>You can only view the content and you have no editing permissions</p>
-  </div>
-  <div *ngSwitchDefault>
-    <h2>Welcome Guest</h2>
-    <p>You are not logged in user</p>
-  </div>
-</div> -->
-
-<!-- 
-<div *ngIf="false">
-  <p>Render this based on the condition ngIf</p>
 </div>
-<div [hidden]="true">
-  <p>Render this based on the condition Hidden</p>
-</div>
-<div class="d-hidden">
-  <p>Render this based on the condition Hidden</p>
-</div>
-<p>Im here</p> -->
 
-<!-- <input type="text" [(ngModel)]="userName" />
-
-<button (click)="addUser()">Add User</button> -->
-
-<!-- <div *ngFor="let user of userList">
-  <besant-user [UserName]="user" [date]="myDate" (sendDate)="getDateFromCHild($event)"></besant-user>
-</div> -->
-
-<!-- <besant-user (sendDate)="getDateFromCHild($event)"></besant-user>
-<besant-add-user [userName]="userName"></besant-add-user> -->
-
-<!-- <besant-template-ref #templeteRef></besant-template-ref> -->
-
-<!-- <p>App component</p> -->
-
-<!-- <besant-parent></besant-parent> -->
-
-<!-- <besant-container></besant-container> -->
-<!-- <input type="text" [(ngModel)]="email" (change)="getValue()" />
-
-<besant-lifecycle *ngIf="show" [email]="email">
-  <p #emailID>My Email ID: {{ email }}</p>
-</besant-lifecycle>
-
-<button class="btn btn-primary" (click)="show = !show">show/hide</button> -->
-<!-- <div class="p-3">
-  <h1>Hover over the box to change its background color</h1>
-  <button besantHighlight>App Component button</button>
-</div> -->
-
-<!-- <besant-pipes></besant-pipes> -->
- <besant-services></besant-services>
-
+<!-- parent to child @Input -->
+<!-- child to parent @Output -->

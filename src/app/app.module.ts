@@ -4,8 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 // component section
-import { UserComponent } from './components/user/user.component';
-import { AddUserComponent } from './components/add-user/add-user.component';
 import { TemplateRefComponent } from './components/template-ref/template-ref.component';
 import { TemplateRef2Component } from './components/template-ref2/template-ref2.component';
 import { TemplateRef3Component } from './components/template-ref3/template-ref3.component';
@@ -25,11 +23,12 @@ import { HighlightDirective } from './directives/highlight.directive';
 import { ServicesComponent } from './components/services/services.component';
 import { Services1Component } from './components/services1/services1.component';
 import { Services2Component } from './components/services2/services2.component';
+import { UserComponent } from './DI/user/user.component';
+import { AddUserComponent } from './DI/add-user/add-user.component';
+import { DiUserService } from './DI/di-user.service';
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent,
-    AddUserComponent,
     TemplateRefComponent,
     TemplateRef2Component,
     TemplateRef3Component,
@@ -46,13 +45,15 @@ import { Services2Component } from './components/services2/services2.component';
     HighlightDirective,
     ServicesComponent,
     Services1Component,
+    AddUserComponent,
+    UserComponent,
     Services2Component // import here components/directives/pipes
   ],
   imports: [
     BrowserModule, // importing other or required modules
     FormsModule
   ],
-  providers: [], // injecting the services
+  // providers: [DiUserService], // injecting the services
 
   exports: [],// where you are going to share component/pipe/directives to other module
   
