@@ -7,16 +7,19 @@ import { EventEmitter } from "@angular/core"
 
 export class DiUserService {
 
-  users: { name: string, status: string }[] = [
+  users: { name: string, status: string, id?: number }[] = [
     {
+      id: 1,
       name: "Navin",
       status: "active"
     },
     {
+      id: 2,
       name: "Anbu",
       status: "active"
     },
     {
+      id: 3,
       name: "Kishore",
       status: "active"
     }
@@ -37,5 +40,11 @@ export class DiUserService {
       status, index
     }
     this.statusUpdated.emit(user)
+  }
+
+  getUserById(id: number) {
+    console.log(id,"id????????????",typeof id);
+    
+    return this.users.find(user => user.id === id)
   }
 }

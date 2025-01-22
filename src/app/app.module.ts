@@ -40,6 +40,10 @@ const route: Routes = [
   {
     path: "pipe",
     component: PipesComponent
+  },
+  {
+    path: "user/:userId",
+    component: UserComponent
   }
 ]
 @NgModule({

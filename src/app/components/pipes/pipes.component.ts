@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 type TList = {
   userId: string;
@@ -16,6 +17,7 @@ type TList = {
   styleUrls: ['./pipes.component.scss']
 })
 export class PipesComponent implements OnInit {
+  userId!: string
   list: TList[] = [
     {
       "userId": "DIA001",
@@ -81,12 +83,19 @@ export class PipesComponent implements OnInit {
       "price": 3600
     }
   ]
-  constructor() { }
+  constructor(private activeRouter: ActivatedRoute) { }
 
   ngOnInit(): void {
     // setInterval(() => {
     //   console.log("change detected...");
     // }, 1000);
+
+    this.activeRouter.queryParams.subscribe(data => {
+      console.log(data, "activeRouter");
+      this.userId = data['userName']
+      console.log(this.userId);
+      
+    })
   }
 
 }

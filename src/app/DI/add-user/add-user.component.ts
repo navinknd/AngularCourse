@@ -14,7 +14,7 @@ export class AddUserComponent implements OnInit {
   constructor(private userService: DiUserService) { }
 
   ngOnInit(): void {
-    this.userService.statusUpdated.subscribe((data: { status: string, index: number }) => {
+    this.userService.statusUpdated.subscribe((data: { name: string, status: string, id?: number }) => {
       console.log(data, "dataaaaaaaaaa");
     })
   }
