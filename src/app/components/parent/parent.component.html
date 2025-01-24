@@ -1,7 +1,15 @@
 <div class="container">
   <p>parent works!</p>
 
-  <besant-child>
+  <!-- <li class="nav-item"> -->
+    <a class="nav-link" routerLink="child" >
+     go to Child component 
+    </a>
+
+    <router-outlet></router-outlet>
+  <!-- </li> -->
+
+  <!-- <besant-child>
     <h5 class="card-title" id="title" #titleRef>Card title1</h5>
     <h5 class="card-title" id="title" #titleRef>Card title2</h5>
     <h5 class="card-title" id="title" #titleRef>Card title3</h5>
@@ -13,7 +21,7 @@
     <besant-cpe [userName]="'Navin3'"></besant-cpe>
     <besant-cpe [userName]="'Navin4'"></besant-cpe>
     
-  </besant-child>
+  </besant-child> -->
   <!-- <button class="btn btn-primary mt-2" (click)="getRef()">Click here parent</button> -->
 </div>
 

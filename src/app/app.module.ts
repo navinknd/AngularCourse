@@ -27,6 +27,7 @@ import { UserComponent } from './DI/user/user.component';
 import { AddUserComponent } from './DI/add-user/add-user.component';
 import { DiUserService } from './DI/di-user.service';
 import { RouterModule, Routes } from '@angular/router';
+import { RxjsComponent } from './components/rxjs/rxjs.component';
 
 const route: Routes = [
   {
@@ -44,6 +45,19 @@ const route: Routes = [
   {
     path: "user/:userId",
     component: UserComponent
+  },
+  {
+    path: "parent",
+    component: ParentComponent,
+    children: [
+      {
+        path: "child",
+        component: ChildComponent
+      }
+    ]
+  }, {
+    path: "rxjs",
+    component: RxjsComponent
   }
 ]
 @NgModule({
@@ -67,7 +81,8 @@ const route: Routes = [
     Services1Component,
     AddUserComponent,
     UserComponent,
-    Services2Component // import here components/directives/pipes
+    Services2Component,
+    RxjsComponent // import here components/directives/pipes
   ],
   imports: [
     BrowserModule, // importing other or required modules

@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DiUserService } from './DI/di-user.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class AppComponent {
   users: { name: string, status: string, id?: number }[] = []
 
-  constructor(private userService: DiUserService, private router: Router) { }
+  constructor(private userService: DiUserService, private router: Router, private activeRouter: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.users = this.userService.users
@@ -28,7 +28,10 @@ export class AppComponent {
     } else if (params) {
       this.router.navigate([route, params])
     } else {
-      this.router.navigate([route])
+      this.router.navigate([route], { relativeTo: this.activeRouter })
+
+      // absolute path
+      // this.router.navigateByUrl(`/pipe/${id}?name=${name}`)
     }
   }
 }
