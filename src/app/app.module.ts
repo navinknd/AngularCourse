@@ -28,6 +28,7 @@ import { AddUserComponent } from './DI/add-user/add-user.component';
 import { DiUserService } from './DI/di-user.service';
 import { RouterModule, Routes } from '@angular/router';
 import { RxjsComponent } from './components/rxjs/rxjs.component';
+import { RegisterComponent } from './components/register/register.component';
 
 const route: Routes = [
   {
@@ -82,7 +83,8 @@ const route: Routes = [
     AddUserComponent,
     UserComponent,
     Services2Component,
-    RxjsComponent // import here components/directives/pipes
+    RxjsComponent,
+    RegisterComponent // import here components/directives/pipes
   ],
   imports: [
     BrowserModule, // importing other or required modules
