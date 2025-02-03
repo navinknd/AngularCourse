@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm, FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms'
+import { Router } from '@angular/router';
 import { CrudService } from 'src/app/services/crud.service';
 @Component({
   selector: 'besant-signup',
@@ -19,10 +20,22 @@ export class SignupComponent implements OnInit {
 
   // userEmail = new FormControl('', Validators.required);
 
-  constructor(private fb: FormBuilder, private crudService: CrudService) { }
+  constructor(private fb: FormBuilder, private crudService: CrudService, private router: Router) { }
 
   ngOnInit(): void {
-    console.log("SignupComponent component loaded");
+    // sessionStorage.setItem('userName', 'navin')
+
+    // setTimeout(() => {
+    //   sessionStorage.setItem('token', 'secret-key-2')
+    // }, 2000);
+
+    // setTimeout(() => {
+    //   sessionStorage.removeItem('token')
+    // }, 4000);
+
+    // setTimeout(() => {
+    //   sessionStorage.clear()
+    // }, 6000);
 
     // this.userEmail.valueChanges.subscribe({
     //   next: (data) => {
@@ -52,7 +65,7 @@ export class SignupComponent implements OnInit {
       phone: ['', Validators.required],
       gender: ['', Validators.required],
       address: ['', Validators.required],
-      dob: ['', Validators.required],
+      dob: [''],
       // profilePicture: ['', Validators.required],
       terms: ['', Validators.requiredTrue],
     });
@@ -73,26 +86,31 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit() {
-    if (!this.registrationForm.valid) return
-    const user = this.registrationForm.value;
-    console.log(user, "userss", this.isEdit);
+    // if (!this.registrationForm.valid) return
+    // const user = this.registrationForm.value;
+    // console.log(user, "userss", this.isEdit);
 
-    if (this.isEdit) {
-      this.crudService.updateUser(user.id, user).subscribe({
-        next: (data: any) => {
-          console.log(data, "create users api success response");
-          this.getUsers()
-        }
-      })
-    } else {
-      this.crudService.createUser(user).subscribe({
-        next: (data: any) => {
-          console.log(data, "create users api success response");
-          this.getUsers()
-        }
-      })
-    }
-
+    // if (this.isEdit) {
+    //   this.crudService.updateUser(user.id, user).subscribe({
+    //     next: (data: any) => {
+    //       console.log(data, "create users api success response");
+    //       this.getUsers()
+    //     },
+    //     error: () => {
+    //       // alert('Something went wrong.. ')
+    //     }
+    //   })
+    // } else {
+    //   this.crudService.createUser(user).subscribe({
+    //     next: (data: any) => {
+    //       console.log(data, "create users api success response");
+    //       this.getUsers()
+    //     }, error: () => {
+    //       // alert('Something went wrong.. ')
+    //     }
+    //   })
+    // }
+    this.router.navigate(['/login']);
 
   }
 
@@ -103,6 +121,9 @@ export class SignupComponent implements OnInit {
         this.users = users
         this.isEdit = false
         this.registrationForm.reset()
+      },
+      error: () => {
+        // alert('Something went wrong.. ')
       }
 
     })
@@ -136,11 +157,14 @@ export class SignupComponent implements OnInit {
     })
   }
   deleteUser(user: any) {
-    this.crudService.deletedUser(user.id).subscribe({
+    this.crudService.deleteUser(user.id).subscribe({
       next: (response: any) => {
         console.log(response, "response");
         this.getUsers()
 
+      },
+      error: () => {
+        // alert('Something went wrong.. ')
       }
     })
   }

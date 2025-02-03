@@ -13,38 +13,23 @@ export class CrudService {
 
 
   createUser(user: any): Observable<any[]> {
-    return this.http.post<any>(this.API_URL, user, {
-      headers: new HttpHeaders({
-        'token': "secret message to get response"
-      })
-    })
+    return this.http.post<any>(this.API_URL, user)
   }
 
   getUsers(): Observable<any[]> {
-    return this.http.get<any>(this.API_URL, {
-      headers: new HttpHeaders({
-        'token': "secret message to get response"
-      })
-    })
+    return this.http.get<any>(this.API_URL)
   }
 
   updateUser(id: number, user: any): any {
     console.log({ id, user }, "payload of update");
 
-    return this.http.put<any>(`${this.API_URL}/${id}`, user, {
-      headers: new HttpHeaders({
-        'token': "secret message to get response"
-      })
-    })
+    return this.http.put<any>(`${this.API_URL}/${id}`, user)
   }
 
-  deletedUser(id: number): any {
-    return this.http.delete<any>(`${this.API_URL}/${id}`, {
-      headers: new HttpHeaders({
-        'token': "secret message to get response"
-      })
-    })
+  deleteUser(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.API_URL}/${id}`);
   }
+
 
 }
 

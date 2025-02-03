@@ -13,7 +13,6 @@ import { CpeComponent } from './components/cpe/cpe.component';
 import { ContainerComponent } from './components/container/container.component';
 import { LifecycleComponent } from './components/lifecycle/lifecycle.component';
 // pipes
-import { PipesComponent } from './components/pipes/pipes.component';
 import { CapPipe } from './pipes/cap.pipe';
 import { AnsPipe } from './pipes/ans.pipe';
 import { PiceCalPipe } from './pipes/pice-cal.pipe';
@@ -31,27 +30,34 @@ import { RxjsComponent } from './components/rxjs/rxjs.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ReactiveFormComponent } from './components/reactive-form/reactive-form.component';
 import { SignupComponent } from './components/signup/signup.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { SigninComponent } from './components/signin/signin.component';
+import { UserInterceptor } from './user.interceptor';
+import { AuthGuard } from './auth.guard';
 const route: Routes = [
   {
     path: "",
-    component: TemplateRefComponent
+    component: SignupComponent
+  },
+  {
+    path: "login",
+    component: SigninComponent
   },
   {
     path: "add-user",
+    canActivate: [AuthGuard],
     component: AddUserComponent
   },
   {
-    path: "pipe",
-    component: PipesComponent
-  },
-  {
     path: "user/:userId",
+    canActivate: [AuthGuard],
     component: UserComponent
   },
   {
     path: "parent",
     component: ParentComponent,
+    // canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
     children: [
       {
         path: "child",
@@ -60,6 +66,7 @@ const route: Routes = [
     ]
   }, {
     path: "rxjs",
+    canActivate: [AuthGuard],
     component: RxjsComponent
   }
 ]
@@ -74,7 +81,6 @@ const route: Routes = [
     CpeComponent,
     ContainerComponent,
     LifecycleComponent,
-    PipesComponent,
     CapPipe,
     AnsPipe,
     PiceCalPipe,
@@ -88,7 +94,8 @@ const route: Routes = [
     RxjsComponent,
     RegisterComponent,
     ReactiveFormComponent,
-    SignupComponent // import here components/directives/pipes
+    SignupComponent,
+    SigninComponent,
   ],
   imports: [
     BrowserModule, // importing other or required modules
@@ -97,7 +104,13 @@ const route: Routes = [
     ReactiveFormsModule,
     HttpClientModule
   ],
-  // providers: [DiUserService], // injecting the services
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: UserInterceptor,
+      multi: true
+    }
+  ], // injecting the services
 
   exports: [],// where you are going to share component/pipe/directives to other module
 
