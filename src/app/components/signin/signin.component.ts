@@ -31,7 +31,7 @@ export class SigninComponent implements OnInit {
       if (formData.email === this.predefinedCredentials.email && formData.password === this.predefinedCredentials.password) {
         console.log('Form Submitted and Credentials Valid!');
         localStorage.setItem("token", formData.email + formData.password)
-        this.router.navigate(['/parent']);
+        this.router.navigate(['/users']);
       } else {
         console.log('Invalid credentials!');
       }

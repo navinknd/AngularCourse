@@ -33,7 +33,12 @@ export class CrudService {
 
 }
 
-// interceptors
-// error handling in api
-// auth
-// modules
+
+// trakeby,
+// pagenot found route
+// avoid memory leak (unsubscribe),
+// asyn pipe,
+// modules,
+// lazy loading,
+
+// change detection,

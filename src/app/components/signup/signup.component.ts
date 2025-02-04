@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm, FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms'
 import { Router } from '@angular/router';
+import { interval, Observable, Subscription } from 'rxjs';
 import { CrudService } from 'src/app/services/crud.service';
 @Component({
   selector: 'besant-signup',
@@ -18,11 +19,32 @@ export class SignupComponent implements OnInit {
 
   registrationForm!: FormGroup;
 
+  intervalSubscribtion!: Subscription
+
+  userSubscribtion!: Subscription
+
+  user$!: Observable<any[]>
+
   // userEmail = new FormControl('', Validators.required);
 
   constructor(private fb: FormBuilder, private crudService: CrudService, private router: Router) { }
 
   ngOnInit(): void {
+    this.user$ = this.crudService.getUsers();
+
+    // this.intervalSubscribtion = interval(1000).subscribe({
+    //   next: (data) => {
+    //     console.log(data);
+    //   },
+    //   error: (error: any) => {
+    //     console.log(error);
+
+    //   },
+    //   complete: () => {
+    //     console.log("Complete Interval");
+
+    //   }
+    // })
     // sessionStorage.setItem('userName', 'navin')
 
     // setTimeout(() => {
@@ -81,7 +103,7 @@ export class SignupComponent implements OnInit {
     //   }
     // })
 
-    this.getUsers()
+    // this.getUsers()
 
   }
 
@@ -114,20 +136,20 @@ export class SignupComponent implements OnInit {
 
   }
 
-  getUsers() {
-    this.crudService.getUsers().subscribe({
-      next: (users) => {
-        console.log(users, "coming from backend");
-        this.users = users
-        this.isEdit = false
-        this.registrationForm.reset()
-      },
-      error: () => {
-        // alert('Something went wrong.. ')
-      }
+  // getUsers() {
+  //   this.userSubscribtion = this.crudService.getUsers().subscribe({
+  //     next: (users) => {
+  //       console.log(users, "coming from backend");
+  //       this.users = users
+  //       this.isEdit = false
+  //       this.registrationForm.reset()
+  //     },
+  //     error: () => {
+  //       // alert('Something went wrong.. ')
+  //     }
 
-    })
-  }
+  //   })
+  // }
 
   editUser(user: any) {
     console.log(user, "editUser");
@@ -160,8 +182,7 @@ export class SignupComponent implements OnInit {
     this.crudService.deleteUser(user.id).subscribe({
       next: (response: any) => {
         console.log(response, "response");
-        this.getUsers()
-
+        this.user$ = this.crudService.getUsers();
       },
       error: () => {
         // alert('Something went wrong.. ')
@@ -169,4 +190,19 @@ export class SignupComponent implements OnInit {
     })
   }
 
+  trackById(index: number, user: any) {
+    // console.log(index, user);
+    return user.id
+  }
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    console.log("ngOnDestroy");
+    if (this.intervalSubscribtion) {
+      this.intervalSubscribtion.unsubscribe()
+    } else if (this.userSubscribtion) {
+      this.userSubscribtion.unsubscribe()
+    }
+  }
 }

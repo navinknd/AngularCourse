@@ -34,14 +34,21 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { SigninComponent } from './components/signin/signin.component';
 import { UserInterceptor } from './user.interceptor';
 import { AuthGuard } from './auth.guard';
+import { GrandparentComponent } from './components/grandparent/grandparent.component';
+import { DadComponent } from './components/dad/dad.component';
+import { KidComponent } from './components/kid/kid.component';
+import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
+import { SharedModule } from './shared/shared.module';
+import { TestComponent } from './shared/test/test.component';
+
 const route: Routes = [
   {
     path: "",
-    component: SignupComponent
+    loadChildren: () => import('../app/auth/auth.module').then(m => m.AuthModule)
   },
   {
-    path: "login",
-    component: SigninComponent
+    path: "users",
+    loadChildren: () => import('../app/user/user.module').then(m => m.UserModule)
   },
   {
     path: "add-user",
@@ -64,10 +71,24 @@ const route: Routes = [
         component: ChildComponent
       }
     ]
-  }, {
+  },
+  {
     path: "rxjs",
     canActivate: [AuthGuard],
     component: RxjsComponent
+  },
+  {
+    path: "test",
+    component: TestComponent
+  },
+  {
+    path: "pagenotfound",
+    component: PagenotfoundComponent
+  },
+
+  {
+    path: "**",
+    component: PagenotfoundComponent
   }
 ]
 @NgModule({
@@ -94,15 +115,20 @@ const route: Routes = [
     RxjsComponent,
     RegisterComponent,
     ReactiveFormComponent,
-    SignupComponent,
-    SigninComponent,
+    GrandparentComponent,
+    DadComponent,
+    KidComponent,
+    PagenotfoundComponent,
   ],
   imports: [
     BrowserModule, // importing other or required modules
     FormsModule,
     RouterModule.forRoot(route),
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    // AuthModule,
+    SharedModule,
+    // UserModule
   ],
   providers: [
     {
