@@ -40,5 +40,4 @@ export class CrudService {
 // asyn pipe,
 // modules,
 // lazy loading,
-
 // change detection,

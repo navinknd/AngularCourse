@@ -12,9 +12,12 @@ export class DadComponent implements OnInit {
 
   ngOnInit(): void {
     setInterval(() => {
-      // this.arr = [Math.random()]
-      this.arr.push(Math.random())
+      this.arr = [Math.random()] // resassign
+      // this.arr.push(Math.random())
     }, 1000);
+
+
+    // smart vs dumb components
   }
   dad() {
     console.log('dad');

@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } 
   selector: 'besant-kid',
   templateUrl: './kid.component.html',
   styleUrls: ['./kid.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class KidComponent implements OnInit {
   @Input() arr: number[] = []
