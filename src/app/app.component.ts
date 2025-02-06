@@ -1,7 +1,14 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DiUserService } from './DI/di-user.service';
+import {ThemePalette} from '@angular/material/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject, Observable, ReplaySubject, Subject } from 'rxjs';
+interface Task {
+  name: string;
+  completed: boolean;
+  color: ThemePalette;
+  subtasks?: Task[];
+}
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,71 +17,35 @@ import { BehaviorSubject, Observable, ReplaySubject, Subject } from 'rxjs';
 })
 
 export class AppComponent {
-  // observableData1: any
-  // subjectData1: any
-  // observableData2: any
-  // subjectData2: any
+  task: Task = {
+    name: 'Indeterminate',
+    completed: false,
+    color: 'primary',
+    subtasks: [
+      {name: 'Primary', completed: false, color: 'primary'},
+      {name: 'Accent', completed: false, color: 'accent'},
+      {name: 'Warn', completed: false, color: 'warn'},
+    ],
+  };
 
-  // myData: any[] = []
-  // // subject = new Subject();
-  // // subject = new ReplaySubject(2); // memroy data
-  // subject = new BehaviorSubject(0); //initial value
+  allComplete: boolean = false;
 
+  updateAllComplete() {
+    this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
+  }
 
-  // getObservableData() {
-  //   console.log("getObservableData");
+  someComplete(): boolean {
+    if (this.task.subtasks == null) {
+      return false;
+    }
+    return this.task.subtasks.filter(t => t.completed).length > 0 && !this.allComplete;
+  }
 
-  //   let myObserable = new Observable<any>(observer => {
-  //     // observer.next("data emited from the myObserable")
-  //     observer.next(Math.floor(Math.random() * 99) + 1)
-  //   })
-
-  //   myObserable.subscribe(data => {
-  //     this.observableData1 = data
-  //   })
-  //   myObserable.subscribe(data => {
-  //     this.observableData2 = data
-  //   })
-  // }
-  // getSubjectData() {
-  //   console.log("getSubjectData");
-
-  //   let mySubject = new Subject()
-
-  //   mySubject.subscribe(data => {
-  //     this.subjectData1 = data
-  //   })
-  //   mySubject.subscribe(data => {
-  //     this.subjectData2 = data
-  //   })
-  //   // mySubject.next("data emited from the mySubject");
-  //   mySubject.next(Math.floor(Math.random() * 99) + 1)
-  // }
-
-  // emitData() {
-  //   console.log("emitData");
-  //   this.subject.next(1);
-  //   setTimeout(() => {
-  //     this.subject.next(2);
-  //   }, 3000);
-  //   setTimeout(() => {
-  //     this.subject.next(3);
-  //   }, 6000);
-  //   setTimeout(() => {
-  //     this.subject.next(4);
-  //   }, 9000);
-  //   setTimeout(() => {
-  //     this.subject.next(5);
-  //   }, 1200);
-  // }
-  // getData() {
-  //   this.subject.subscribe(data => {
-  //     console.log("getData", data);
-  //     this.myData.push(data)
-  //   })
-  // }
-
-  // getValue(event: any) {
-  //   console.log(event?.target?.value);
-  // }
+  setAll(completed: boolean) {
+    this.allComplete = completed;
+    if (this.task.subtasks == null) {
+      return;
+    }
+    this.task.subtasks.forEach(t => (t.completed = completed));
+  }
 }

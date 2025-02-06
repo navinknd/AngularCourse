@@ -40,6 +40,14 @@ import { KidComponent } from './components/kid/kid.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import { SharedModule } from './shared/shared.module';
 import { TestComponent } from './shared/test/test.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatListModule} from '@angular/material/list';
+
 
 const route: Routes = [
   {
@@ -121,6 +129,7 @@ const route: Routes = [
     PagenotfoundComponent,
   ],
   imports: [
+    MatIconModule,MatDividerModule,MatButtonModule,
     BrowserModule, // importing other or required modules
     FormsModule,
     RouterModule.forRoot(route),
@@ -128,7 +137,11 @@ const route: Routes = [
     HttpClientModule,
     // AuthModule,
     SharedModule,
-    // UserModule
+    BrowserAnimationsModule,
+    // UserModule,
+    MatProgressSpinnerModule,
+    MatCheckboxModule,
+    MatListModule
   ],
   providers: [
     {
